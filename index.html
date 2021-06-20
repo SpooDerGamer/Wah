@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <style>
+      body {
+        font-family: "Papyrus";
+      }
+      div {
+        border: 2px solid #12692c;
+        border-radius: 10px;
+        width: 600px;
+        padding:13px;
+        text-align: center;
+        margin: 150px auto;
+        box-shadow: 0px 0px 100px 3px #8e85da;
+      }
+      button{
+        margin: 10px auto;
+        transition: width 2s, height 2s;
+        width : 115px;
+        height: 35px;
+      }
+      button:hover{
+        background-color:#6c79bd;
+        width:150px;
+        height:50px
+      }
+    </style>
+  </head>
+  <body>
+
+      <div>
+        <h1 id = "qtext"></h1>
+        <button type="button" onclick="usan(this.id)" class = "answer" id="a"></button>
+        <button type="button" onclick="usan(this.id)" class = "answer" id="b"></button>
+        <button type="button" onclick="usan(this.id)" class = "answer" id="c"></button>
+        <button type="button" onclick="usan(this.id)" class = "answer" id="d"></button>
+      </div>
+
+    </body>
+
+  <script type="text/javascript">
+  btns=document.querySelectorAll("button")
+  var qnum = 0
+  var cnum = 0
+  qtxt = document.getElementById("qtext")
+  var qss = [
+    {
+      "text": "Worst Food",
+      "answers": {
+        "a":"Meatloaf",
+        "b":"Eggs",
+        "c":"Brussel Sprouts",
+        "d":"Smoothies",
+      },
+      "correct":"a"
+    },
+    {
+      "text": "Best Texture Pack",
+      "answers": {
+        "a":"Wapaam",
+        "b":"Bombies",
+        "c":"Fiizy",
+        "d":"No Opinion",
+      },
+      "correct":"d"
+    },
+    {
+      "text": "Gaming Mouse",
+      "answers": {
+        "a":"Glorious Model O",
+        "b":"Bloody A70",
+        "c":"Zelotes T90",
+        "d":"Magic Mouse 2",
+      },
+      "correct":"c"
+    },
+  ]
+
+  function stpq() {
+    if (qnum < qss.length) {
+      curq = qss[qnum]
+      qtxt.innerHTML=curq.text
+        for (var i = 0; i < 4; i++) {
+          if (i==0) {
+            btns[i].innerHTML=curq.answers["a"]
+          }
+          if (i==1) {
+            btns[i].innerHTML=curq.answers["b"]
+          }
+          if (i==2) {
+            btns[i].innerHTML=curq.answers["c"]
+          }
+          if (i==3) {
+            btns[i].innerHTML=curq.answers["d"]
+        }
+      }
+    }
+
+    else {
+    qtxt.innerHTML="This is the End!"
+      for (var i = 0; i < 4; i++) {
+        if (i==0) {
+          btns[i].innerHTML="THANK"
+          btns[i].disabled = true
+        }
+        if (i==1) {
+          btns[i].innerHTML="YOU"
+          btns[i].disabled = true
+        }
+        if (i==2) {
+          btns[i].innerHTML="FOR"
+          btns[i].disabled = true
+        }
+        if (i==3) {
+          btns[i].innerHTML="ANSWERING"
+          btns[i].disabled = true
+        }
+      }
+    }
+  }
+  stpq()
+  function usan(id){
+    curq=qss[qnum]
+    if (id == curq.correct) {
+      cnum += 1
+      stpq()
+    }
+    qnum += 1
+  }
+  </script>
+</html>
